@@ -1,0 +1,54 @@
+PASSWD(1)                        User Commands                        PASSWD(1)
+
+NAME
+       passwd - change user password
+
+SYNOPSIS
+       passwd <new_password>
+
+DESCRIPTION
+       Changes the system password stored in the system configuration file.
+
+       If the current password is the default ("root"), the password is
+       changed without any verification.
+
+       If the current password has already been set by the user, passwd
+       will prompt for the current password before allowing the change.
+
+ARGUMENTS
+       new_password
+              The new password to set. Must be provided as a command line
+              argument.
+
+PROMPTS
+       Current password:
+              Shown when the current password is not the default. The user
+              must enter the correct current password to proceed.
+
+EXIT STATUS
+       0      Password changed successfully.
+
+       1      Incorrect current password was entered.
+
+       1      No new password argument was provided.
+
+EXAMPLES
+       Change password while default is set:
+              passwd mynewpassword
+
+       Change password after default has been changed:
+              passwd mynewpassword
+              Current password: ********
+
+FILES
+       ../../imp/system.json
+              System configuration file where the password is stored.
+
+NOTES
+       The default password is "root". It is strongly recommended to change
+       the password on first use.
+
+SEE ALSO
+       login(1), su(1)
+
+                                                                      PASSWD(1)

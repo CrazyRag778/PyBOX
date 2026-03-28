@@ -1,5 +1,8 @@
 {
   "man": {
     "isSystem": true
+  },
+  "passwd": {
+    "isSystem": true
   }
 }

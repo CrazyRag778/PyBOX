@@ -14,7 +14,7 @@ PWD = "home/"
 # DEBUG
 # print(PWD)
 # print(PROMPT)
-print(APP_REGISTER_LIST)
+# print(APP_REGISTER_LIST)
 
 open("ENV/.system.json", "a")
 
@@ -47,8 +47,8 @@ start_system()
 while True:
     cmd = input(f"[{PWD}] " + PROMPT)
     cmd = cmd.split(" ")
-    if cmd[0] == "exit":
-        break
+    if cmd[0] == "killself":
+        exit(0)
     elif cmd[0] == "shutdown":
         stop_system()
     elif cmd[0] in APP_REGISTER_LIST:
