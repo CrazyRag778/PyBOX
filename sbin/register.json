@@ -4,5 +4,8 @@
   },
   "passwd": {
     "isSystem": true
+  },
+  "flexfetch": {
+    "isSystem": true
   }
 }
