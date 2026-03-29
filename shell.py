@@ -51,6 +51,8 @@ while True:
         exit(0)
     elif cmd[0] == "shutdown":
         stop_system()
+    elif cmd[0] == "clear":
+        subprocess.run("clear", shell=True)
     elif cmd[0] in APP_REGISTER_LIST:
         cmd[0] = f"sbin/{cmd[0]}/" + cmd[0] + ".py"
         cmd = " ".join(["python3", *cmd])
