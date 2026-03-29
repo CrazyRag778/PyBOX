@@ -8,15 +8,29 @@ SYSTEM_INFO = json.load(open(os.path.join(BASE_DIR, "imp", "system.json")))
 HOSTNAME = SYSTEM_INFO["HOSTNAME"]
 
 
-APP_REGISTER = json.load(open(os.path.join(BASE_DIR, "sbin", "register.json")))
-APP_REGISTER_LIST = list(APP_REGISTER.keys())
+def REBASE_SYSTEM_BIN():
+    global SYSTEM_APP_REGISTER
+    global SYSTEM_APP_REGISTER_LIST
+    global APP_REGISTER
+    global APP_REGISTER_LIST
+
+    SYSTEM_APP_REGISTER = json.load(open(os.path.join(BASE_DIR, "sbin", "register.json")))
+    SYSTEM_APP_REGISTER_LIST = list(SYSTEM_APP_REGISTER.keys())
+
+    APP_REGISTER = json.load(open(os.path.join(BASE_DIR, "bin", "register.json")))
+    APP_REGISTER_LIST = list(APP_REGISTER.keys())
+
+REBASE_SYSTEM_BIN()
+
+print(APP_REGISTER_LIST)
 
 PROMPT = f"system@{HOSTNAME}$ "
 PWD = "home"
+
 # DEBUG
 # print(PWD)
 # print(PROMPT)
-# print(APP_REGISTER_LIST)
+# print(SYSTEM_APP_REGISTER_LIST)
 
 open(os.path.join(BASE_DIR, "ENV", ".system.json"), "a")
 
@@ -55,10 +69,23 @@ while True:
         stop_system()
     elif cmd[0] == "clear":
         subprocess.run("clear", shell=True)
-    elif cmd[0] in APP_REGISTER_LIST:
+
+    # BINARY EXECUTION    
+    elif cmd[0] in SYSTEM_APP_REGISTER_LIST:
         cmd[0] = os.path.join(BASE_DIR, "sbin", cmd[0], cmd[0] + ".py")
         cmd = " ".join(["python3", *cmd])
         result = subprocess.run(cmd, shell=True)
+    elif cmd[0] in APP_REGISTER_LIST:
+        cmd[0] = os.path.join(BASE_DIR, "bin", cmd[0], cmd[0] + ".py")
+        cmd = " ".join(["python3", *cmd])
+        result = subprocess.run(cmd, shell=True)
+
+    # Reinitialise system variables
+    elif cmd[0] == "rebase":
+        # SYSTEM BIN REGISTERS
+        if cmd[1] == "system/bin":
+            REBASE_SYSTEM_BIN()
+
     elif cmd[0] == "mkdir":
         make_dir(cmd[1])
     else:
