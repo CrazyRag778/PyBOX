@@ -2,7 +2,7 @@
 
 > A fantasy virtual computer that simplifies packing software and blobs — with the feel of a complete configurable environment.
 
-PyBOX is a Python-based virtual fantasy computer image that simulates a real computer environment. It features a custom shell, app registry, user management, encrypted storage, a `neofetch`-style system info module, and a `man` page system — all built from pure Python. This is the **VanillA Image known as CrazyRag778's Image**.
+PyBOX is a Python-based virtual fantasy computer image that simulates a real computer environment. It features a custom shell, app registry, user management, encrypted storage, a `neofetch`-style system info module, and a `man` page system — all built from pure Python. This is the **Vanilla Image known as CrazyRag778's Image**.
 
 ---
 
