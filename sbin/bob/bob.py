@@ -14,6 +14,11 @@ Mechanism:
 
 Dependencies: shell.py uses bob to manage installed applications and maintains
 the registry that controls which commands are available at shell prompt.
+
+04/13/2026 [Dibyojit Datta]
+The extension for the tarball has been changed to .cat (resembling Schrodinger's Cat). 
+The old .tar extensions support has been removed (Backward compatibility*)
+
 """
 
 import json
@@ -80,7 +85,7 @@ def safe_save_register():
 def get_name(tarball):
     """
     Extract package name from tarball filename.
-    Example: "myapp.tar.gz" → "myapp"
+    Example: "myapp.cat" → "myapp"
     
     Validates format: filename must contain a dot.
     Raises ValueError if invalid.
